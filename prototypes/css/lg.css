@@ -4,24 +4,30 @@
 	margin: 0px;
 	width: 100px;
 	height: 100px;
-	top: 20px;
-	left: 20px;
+	top: 5px;
+	left: 590px;
 }
 
 .ui-element__header_logotext {
 	position: absolute;
 	padding: 0px;
 	margin: 10px;
-	top: 40px;
-	left: 120px;
+	top: 95px;
+	left: 490px;
+	background:white;
+	font-size:28px;
+	border-radius:5px;
 }
 
 .ui-element__maincontent_depatmentlogo {
-	padding: 10px;
-	margin: 10px;
+	width: 200px;
+	height: 200px;
+	border-radius:10px;
+	padding: 0px;
+	margin: 0px;
 	position: absolute;
 	top: 172px;
-	left: 500px;
+	left: 538px;
 }
 
 .ui-element__maincontent2_userphoto {
@@ -139,15 +145,21 @@
 }
 
 .ui-element__header {
-	margin: 0px auto;
-	height: 145px;
-	background: #8080ff;
-}
+	height: 130px;	
+	width:100%;
+	max-width: 1470px;
+	margin:0 auto;
+	}
 
 .ui-element__maincontent {
-	margin: 0px auto;
-	height: 900px;
-	background: #708090;
+	 background:#6cfc69;
+	padding: 0px;
+	margin: 0 auto;
+	height: 765px;
+	width: 100%;
+	max-width: 1470px;
+	
+	
 }
 
 .ui-element__maincontent_passwordtext {
@@ -168,10 +180,10 @@
 
 .ui-element__maincontent_namedepartmenttext {
 	position: absolute;
-	box-sizing: content-box;
-	font-size: 15px;
-	top: 430px;
-	left: 555px;
+	
+	font-size: 17px;
+	top: 370px;
+	left: 560px;
 	width: 152px;
 	font-weight: bold;
 }
@@ -208,7 +220,7 @@
 	margin: 60px auto 30px;
 	padding: 15px;
 	position: absolute;
-	top: 480px;
+	top: 380px;
 	left: 450px;
 	/* Styles */
 	background: #fffaf6;
@@ -262,10 +274,10 @@
 	display: block;
 	padding: 0 0 5px 2px;
 	cursor: pointer;
-	text-transform: uppercase;
+	text-transform: none;
 	font-weight: 300;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-	font-size: 11px;
+	font-size: 18px;
 }
 
 .form-2 label i {
@@ -383,14 +395,15 @@
 	margin-bottom: -100px;
 }
 
-.footer, .pusher {
+.footer {
 	height: 100px;
 }
 
 .footer {
-	background: #CCFFCC;
+	background: #ff2b2b;
 	line-height: 100px;
 	padding: 0 10px;
+	font-weight: bold;
 }
 
 .end {
