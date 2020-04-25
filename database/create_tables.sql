@@ -6,7 +6,7 @@ CREATE TABLE "manager_of_hse" (
 	"position" TEXT NOT NULL
 );
 CREATE TABLE "labor_protection_instructions" (
-	"serial_number" SERIAL PRIMARY KEY,
+	"serial_number" INTEGER PRIMARY KEY,
 	"name" TEXT NOT NULL,
 	"date_of_creation" DATE NOT NULL,
 	"expiration_date" DATE NOT NULL
@@ -21,9 +21,9 @@ CREATE TABLE "workers_personal_card" (
 	"personnel_number" SERIAL PRIMARY KEY,
 	"name" TEXT NOT NULL,
 	"surname" TEXT NOT NULL,
-	"position" TEXT NOT NULL,
 	"work_area" TEXT NOT NULL,
-	"date_of_briefing" DATE NOT NULL,
+	"position" TEXT NOT NULL,
+	"date_of_briefing" DATE,
 	"briefing_type" TEXT NOT NULL,
 	"serial_number_id" INTEGER NOT NULL REFERENCES "labor_protection_instructions" ON DELETE RESTRICT,
 	"workflow_journal_id" INTEGER REFERENCES "workflow_journal" ON DELETE RESTRICT,
