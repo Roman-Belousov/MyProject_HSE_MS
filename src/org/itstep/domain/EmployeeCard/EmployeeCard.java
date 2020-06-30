@@ -1,14 +1,29 @@
 package org.itstep.domain.EmployeeCard;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.itstep.domain.Entity;
 
+@SuppressWarnings("serial")
 public class EmployeeCard extends Entity {
+	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
 	 public Long personnelnumber;
 	 private String name;	 
 	 private String surname;
 	 private String workarea;
 	 private String position;
+	 private String briefingtype;
+	 private Date dateofbriefing;
 	
+
+	public Date getDateofbriefing() {
+		return dateofbriefing;
+	}
+
+	public void setDateofbriefing(Date dateofbriefing) {
+		this.dateofbriefing = dateofbriefing;
+	}
 
 	public String getName() {
 		return name;
@@ -52,10 +67,17 @@ public class EmployeeCard extends Entity {
 		this.position = position;
 	}	
 	
+	public String getBriefingtype() {
+		return briefingtype;
+	}
+
+	public void setBriefingtype(String briefingtype) {
+		this.briefingtype = briefingtype;
+	}
 	@Override
 	public String toString() {
 		return "Табельный №: " + personnelnumber + "  " + " Имя: " + name +   "  " + " Фамилия: " + surname + 
-				"  " + "Подразделение: " + workarea + "  " + "Профессия: " + position;
+				"  " + "Подразделение: " + workarea + "  " + "Профессия: " + position + "Вид инструктажа: " + briefingtype + "Дата инструктажа: " + dateofbriefing ;
 	}
 
 	

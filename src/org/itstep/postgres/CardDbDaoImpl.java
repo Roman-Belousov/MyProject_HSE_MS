@@ -41,25 +41,25 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 	}
 
 	@Override
-	public EmployeeCard read(Long personnelnumber) throws DaoException {
-		String sql = "SELECT \"personnel_number\", \"name\", \"surname\", \"work_area\", \"position\" FROM \"workers_personal_card\" WHERE \"id\" = ?";
+	public EmployeeCard read(Long id) throws DaoException {
+		String sql = "SELECT \"personnel_number\", \"name\", \"surname\", \"work_area\", \"position\", \"briefing_type\" , \"date_of_briefing\"FROM \"workers_personal_card\" WHERE \"id\" = ?";
 		PreparedStatement s = null;
 		ResultSet r = null;
 		try {
 			s = c.prepareStatement(sql);
-			s.setLong(1, personnelnumber);
+			s.setLong(1, id);
 			r = s.executeQuery();
 			EmployeeCard employeecard = null;
 			if(r.next()) {
 				employeecard = new EmployeeCard();
-				employeecard.setId(personnelnumber);
-				
+				employeecard.setId(id);				
 				employeecard.setPersonnelnumber(r.getLong("personnel_number"));
 				employeecard.setName(r.getString("name"));
 				employeecard.setSurname(r.getString("surname"));
 				employeecard.setWorkarea(r.getString("work_area"));
 				employeecard.setPosition(r.getString("position"));
-				
+				employeecard.setBriefingtype(r.getString("briefing_type"));
+				employeecard.setDateofbriefing(r.getDate("date_of_briefing"));
 			}
 			return employeecard;
 		} catch(SQLException e) {
@@ -82,6 +82,7 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 			s.setString(3, employeecard.getSurname());
 			s.setString(4, employeecard.getWorkarea());
 			s.setString(5, employeecard.getPosition());
+			s.setLong(6, employeecard.getId());
 			s.executeUpdate();
 		} catch(SQLException e) {
 			throw new DaoException(e);
@@ -91,12 +92,12 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 	}
 
 	@Override
-	public void delete(Long personnelnumber) throws DaoException {
-		String sql = "DELETE FROM \"workers_personal_card\" WHERE \"personnel_number\" = ?";
+	public void delete(Long id) throws DaoException {
+		String sql = "DELETE FROM \"workers_personal_card\" WHERE \"id\" = ?";
 		PreparedStatement s = null;
 		try {
 			s = c.prepareStatement(sql);
-			s.setLong(1, personnelnumber);
+			s.setLong(1, id);
 			s.executeUpdate();
 		} catch(SQLException e) {
 			throw new DaoException(e);
@@ -107,7 +108,7 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 
 	@Override
 	public List<EmployeeCard> read() throws DaoException {
-		String sql = "SELECT  \"personnel_number\", \"name\", \"surname\" , \"work_area\" , \"position\" FROM \"workers_personal_card\"";
+		String sql = "SELECT  \"id\",\"personnel_number\", \"name\", \"surname\" , \"work_area\" , \"position\", \"briefing_type\", \"date_of_briefing\" FROM \"workers_personal_card\" ORDER BY \"personnel_number\"";
 		Statement s = null;
 		ResultSet r = null;
 		try {
@@ -117,12 +118,14 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 			while(r.next()) {
 				EmployeeCard employeecard = new EmployeeCard();
 				
+				employeecard.setId(r.getLong("id"));
 				employeecard.setPersonnelnumber(r.getLong("personnel_number"));
 				employeecard.setName(r.getString("name"));
 				employeecard.setSurname(r.getString("surname"));
 				employeecard.setWorkarea(r.getString("work_area"));
 				employeecard.setPosition(r.getString("position"));
-				
+				employeecard.setBriefingtype(r.getString("briefing_type"));
+				employeecard.setDateofbriefing(r.getDate("date_of_briefing"));
 				employeecards.add(employeecard);
 			}
 			return employeecards;

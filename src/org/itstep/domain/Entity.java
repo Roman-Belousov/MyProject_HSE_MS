@@ -1,6 +1,9 @@
 package org.itstep.domain;
 
-abstract public class Entity {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+abstract public class Entity implements Serializable {
 	private Long id;
 
 	public Long getId() {
