@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" href="css/main.css" type="text/css">
+<title>Template page</title>
+</head>
+<body>
+	<style>
+* {
+	box-sizing: border-box;
+}
+
+.grid-container {
+	height: 100vh;
+	display: grid;
+	grid-template-areas: "header" "menu" "content" "footer";
+	
+	grid-template-rows: 10em  5em  36em ;
+}
+
+.header {
+	grid-area: header;
+	text-align: center;
+	color:white;
+	background-image: url(../upload/banner-1504653__340.png)
+}
+
+
+.menu {
+	grid-area: menu;
+	background-color: #F4A460;
+	
+	
+}
+
+.content {
+	grid-area: content;
+	background-color: #87CEFA;
+}
+
+.footer {
+	grid-area: footer;
+	color:white;
+	background-image: url(../upload/banner-1504653__340.png)
+}
+
+
+</style>
+
+<body>
+
+	<div class="grid-container">
+	
+		<div class="header">
+		
+		<img  src="../upload/84461585746713.png" style=" position: absolute;
+	padding: 0px;
+	margin: 0px;
+	width: 130px;
+	height: 130px;
+	top: 15px;
+	border-radius: 60px;
+	left: 20px">
+			<h1>
+				<a>ROM DEVELOPMENT</a>
+			</h1>
+			<h2>
+				<a>Helth safety environment management system</a>
+			</h2>
+		</div>
+		<div class="content">
+			<h1 class="title">#</h1>
+			<p class="text">#</p>
+
+			<article>
+				<h2 class="title">#</h2>
+				<p class="text">#</p>
+			</article>
+
+			<article>
+				<h2 class="title">#</h2>
+				<p class="text">#</p>
+			</article>
+		</div>
+		<div class="menu">
+			<ul>
+   
+   <li><a href="#"><i class="fa fa-shopping-cart"></i>Сотрудники</a>
+      <ul>
+         <li><a href="#">Добавить нового</a> </li>
+         <li><a href="#">Найти сотрудника</a>
+            
+      </ul>
+   </li>
+   <li><a href="#"><i class="fa fa-cogs"></i>Документы</a>
+      <ul>
+         <li><a href="#">Приказы</a>
+          <ul>
+               <li><a href="#">Добавить новый</a></li>
+                <li><a href="#">Найти существующий</a></li>
+               </ul>
+               </li>
+         <li><a href="#">Предписания</a>
+         <ul>
+               <li><a href="#">Добавить новое</a></li>
+                <li><a href="#">Найти существующее</a></li>
+               </ul>
+               </li>
+         <li><a href="#">Информационные письма</a></li>
+      </ul>
+   </li>
+   <li><a href="#"><i class="fa fa-th-list"></i>Инструкции</a>
+   <ul>
+         <li><a href="#">Должностные</a></li>
+         <li><a href="#">По охране труда</a></li>
+         <li><a href="#">По работе на оборудовании</a></li>
+         <li><a href="#">Карты техпроцесса</a></li>
+      </ul>
+   </li>
+   <li><a href="#"><i class="fa fa-envelope-open"></i>Контакты</a></li>
+   <li><a href="#"><i class="fa fa-home"></i>Профиль</a></li>
+    <li><a href="#"><i class="fa fa-home"></i>Выйти</a></li>
+</ul>   
+		</div>
+
+		<div class="footer">
+			<p>© copyright 2020 Roman Belousov</p>
+		</div>
+	</div>
+</body>
+</body>
+</html>
