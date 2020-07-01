@@ -17,8 +17,6 @@ public class Workflowjournal extends Entity {
 	private Date briefingdate;
 	
 	
-	
-
 
 	public EmployeeCard getEmployeecard() {
 		return employeecard;
