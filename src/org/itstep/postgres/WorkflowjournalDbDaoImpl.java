@@ -8,7 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.itstep.domain.EmployeeCard.EmployeeCard;
 import org.itstep.domain.Instruction.Instruction;
+import org.itstep.domain.Workflowjournal.BriefingType;
 import org.itstep.domain.Workflowjournal.Workflowjournal;
 
 
@@ -27,9 +29,9 @@ public class WorkflowjournalDbDaoImpl implements WorkflowjournalDao {
 		ResultSet r = null;
 		try {
 			s = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // просим, чтобы statement МОГ получить ключи
-			s.setLong(1, workflowjournal.getInstructionid().getId());
+			s.setLong(1, workflowjournal.getInstruction().getId());
 			s.setLong(2, workflowjournal.getBriefingtype().getId());
-			s.setLong(3, workflowjournal.getWorkerspersonalcardid().getId());
+			s.setLong(3, workflowjournal.getEmployeecard().getId());
 			s.setDate(4, new java.sql.Date(workflowjournal.getBriefingdate().getTime()));			
 			s.executeUpdate();
 			r = s.getGeneratedKeys(); // ПОЛУЧАЕМ сгенерированные ключи (не работает без Statement.RETURN_GENERATED_KEYS)
@@ -56,10 +58,12 @@ public class WorkflowjournalDbDaoImpl implements WorkflowjournalDao {
 			if(r.next()) {
 				workflowjournal = new Workflowjournal();
 				workflowjournal.setId(id);
-				workflowjournal.setInstructionid(new Instruction());
-				workflowjournal.getInstructionid().setId(r.getLong("instruction_id"));;
+				workflowjournal.setInstruction(new Instruction());
+				workflowjournal.setBriefingtype(new BriefingType());
+				workflowjournal.setEmployeecard(new EmployeeCard());
+				workflowjournal.getInstruction().setId(r.getLong("instruction_id"));
 				workflowjournal.getBriefingtype().setId(r.getLong("briefing_type_id"));
-				workflowjournal.getWorkerspersonalcardid().setId(r.getLong("workers_personal_card_id"));
+				workflowjournal.getEmployeecard().setId(r.getLong("workers_personal_card_id"));
 				workflowjournal.setBriefingdate(r.getDate("briefing_date"));
 			}
 			return workflowjournal;
@@ -78,9 +82,9 @@ public class WorkflowjournalDbDaoImpl implements WorkflowjournalDao {
 		PreparedStatement s = null;
 		try {
 			s = c.prepareStatement(sql);
-			s.setLong(1, workflowjournal.getInstructionid().getId());
+			s.setLong(1, workflowjournal.getInstruction().getId());
 			s.setLong(2, workflowjournal.getBriefingtype().getId());
-			s.setLong(3, workflowjournal.getWorkerspersonalcardid().getId());
+			s.setLong(3, workflowjournal.getEmployeecard().getId());
 			s.setDate(4, new java.sql.Date(workflowjournal.getBriefingdate().getTime()));
 			s.executeUpdate();
 		} catch(SQLException e) {
@@ -117,9 +121,12 @@ public class WorkflowjournalDbDaoImpl implements WorkflowjournalDao {
 			while(r.next()) {
 				Workflowjournal workflowjournal = new Workflowjournal();
 				workflowjournal.setId(r.getLong("id"));
-				workflowjournal.getInstructionid().setId(r.getLong("instruction_id"));;
+				workflowjournal.setInstruction(new Instruction());
+				workflowjournal.setBriefingtype(new BriefingType());
+				workflowjournal.setEmployeecard(new EmployeeCard());
+				workflowjournal.getInstruction().setId(r.getLong("instruction_id"));;
 				workflowjournal.getBriefingtype().setId(r.getLong("briefing_type_id"));
-				workflowjournal.getWorkerspersonalcardid().setId(r.getLong("workers_personal_card_id"));
+				workflowjournal.getEmployeecard().setId(r.getLong("workers_personal_card_id"));
 				workflowjournal.setBriefingdate(r.getDate("briefing_date"));				
 				workflowjournals.add(workflowjournal);
 			}

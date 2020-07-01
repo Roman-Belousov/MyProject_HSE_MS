@@ -12,28 +12,31 @@ public class Workflowjournal extends Entity {
 	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
 
 	private BriefingType briefingtype;
-	private Instruction instructionid;
-	private EmployeeCard workerspersonalcardid;
+	private Instruction instruction;
+	private EmployeeCard employeecard;
 	private Date briefingdate;
 	
 	
-	public EmployeeCard getWorkerspersonalcardid() {
-		return workerspersonalcardid;
+	
+
+
+	public EmployeeCard getEmployeecard() {
+		return employeecard;
 	}
 
 
-	public void setWorkerspersonalcardid(EmployeeCard workerspersonalcardid) {
-		this.workerspersonalcardid = workerspersonalcardid;
+	public void setEmployeecard(EmployeeCard employeecard) {
+		this.employeecard = employeecard;
 	}
 
 
-	public Instruction getInstructionid() {
-		return instructionid;
+	public Instruction getInstruction() {
+		return instruction;
 	}
 
 
-	public void setInstructionid(Instruction instructionid) {
-		this.instructionid = instructionid;
+	public void setInstruction(Instruction instruction) {
+		this.instruction = instruction;
 	}
 	
 	
@@ -57,7 +60,7 @@ public class Workflowjournal extends Entity {
 	@Override
 	public String toString() {
 		return briefingtype + " / "
-				+ "[" + getId() + "] "  + "," + instructionid
+				+ "[" + getId() + "] "  + "," + instruction
 				 + "," + SDF.format(briefingdate);
 	}
 }
