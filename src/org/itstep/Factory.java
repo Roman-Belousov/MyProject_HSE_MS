@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.itstep.logic.BriefingTypeService;
+import org.itstep.logic.BriefingTypeServiceImpl;
 import org.itstep.logic.CardService;
 import org.itstep.logic.CardServiceImpl;
 import org.itstep.logic.InstructionService;
@@ -15,6 +17,10 @@ import org.itstep.logic.InstructionTypeServiceImpl;
 import org.itstep.logic.LogicException;
 import org.itstep.logic.UserService;
 import org.itstep.logic.UserServiceImpl;
+import org.itstep.logic.WorkflowjournalService;
+import org.itstep.logic.WorkflowjournalServiceImpl;
+import org.itstep.postgres.BriefingTypeDao;
+import org.itstep.postgres.BriefingTypeDbDaoImpl;
 import org.itstep.postgres.CardDbDaoImpl;
 import org.itstep.postgres.EmployeeCardDao;
 import org.itstep.postgres.InstructionDao;
@@ -23,6 +29,8 @@ import org.itstep.postgres.InstructionTypeDao;
 import org.itstep.postgres.InstructionTypeDbDaoImpl;
 import org.itstep.postgres.UserDao;
 import org.itstep.postgres.UserDbDaoImpl;
+import org.itstep.postgres.WorkflowjournalDao;
+import org.itstep.postgres.WorkflowjournalDbDaoImpl;
 import org.itstep.web.action.Action;
 import org.itstep.web.action.LoginAction;
 import org.itstep.web.action.LogoutAction;
@@ -35,6 +43,7 @@ import org.itstep.web.action.instruction.InstructionDeleteAction;
 import org.itstep.web.action.instruction.InstructionEditAction;
 import org.itstep.web.action.instruction.InstructionListAction;
 import org.itstep.web.action.instruction.InstructionSaveAction;
+import org.itstep.web.action.workflowjournal.WorkflowjournalListAction;
 
 public class Factory implements AutoCloseable{
 	
@@ -55,6 +64,7 @@ public class Factory implements AutoCloseable{
 		actions.put("/instruction/delete", () -> getInstructionDeleteAction());
 		actions.put("/managerinstructionlist", () -> getInstructionListAction());
 		actions.put("/manageremployeecardlist", () -> getCardListAction());
+		actions.put("/managerworkflowjournallist", () -> getWorkflowjournalListAction());
 	}
 	
 	public Action getAction(String url) throws LogicException {
@@ -174,6 +184,9 @@ public class Factory implements AutoCloseable{
 		return userDao;
 	}
 	
+	//TODO Доработать CRUD операции в Instruction & Workflowjournal
+	
+	
 	private InstructionDao instructionDao = null;
 	public InstructionDao getInstructionDao() throws LogicException {
 		if(instructionDao == null) {
@@ -252,6 +265,60 @@ public class Factory implements AutoCloseable{
 			instructionDeleteActionImpl.setInstructionService(getInstructionService());
 		}
 		return instructionDeleteAction;
+	}
+	
+	
+	
+	
+	
+	private WorkflowjournalDao workflowjournalDao = null;
+	public WorkflowjournalDao getWorkflowjournalDao() throws LogicException {
+		if(workflowjournalDao == null) {
+			WorkflowjournalDbDaoImpl workflowjournalDaoImpl = new WorkflowjournalDbDaoImpl();
+			workflowjournalDao = workflowjournalDaoImpl;
+			workflowjournalDaoImpl.setConnection(getConnection());
+		}
+		return workflowjournalDao;
+	}
+	
+	private BriefingTypeDao briefingtypeDao = null;
+	public BriefingTypeDao getBriefingTypeDao() throws LogicException {
+		if(briefingtypeDao == null) {
+			BriefingTypeDbDaoImpl briefingtypeDaoImpl = new BriefingTypeDbDaoImpl();
+			briefingtypeDao = briefingtypeDaoImpl;
+			briefingtypeDaoImpl.setConnection(getConnection());
+		}
+		return briefingtypeDao;
+	}
+	
+	private WorkflowjournalService workflowjournalService = null;
+	public WorkflowjournalService getWorkflowjournalService() throws LogicException {
+		if(workflowjournalService == null) {
+			WorkflowjournalServiceImpl service = new WorkflowjournalServiceImpl();
+			workflowjournalService = service;
+			service.setWorkflowjournalDao(getWorkflowjournalDao());
+			service.setBriefingTypeDao(getBriefingTypeDao());
+		}
+		return workflowjournalService;
+	}
+	
+	private BriefingTypeService briefingtypeService = null;
+	public BriefingTypeService getBriefingTypeService() throws LogicException {
+		if(briefingtypeService == null) {
+			BriefingTypeServiceImpl service = new BriefingTypeServiceImpl();
+			briefingtypeService = service;
+			service.setBriefingTypeDao(getBriefingTypeDao());
+		}
+		return briefingtypeService;
+	}
+	private Action workflowjournalListAction = null;
+	public Action getWorkflowjournalListAction() throws LogicException {
+		if(workflowjournalListAction == null) {
+			WorkflowjournalListAction workflowjournalListActionImpl = new WorkflowjournalListAction();
+			workflowjournalListAction = workflowjournalListActionImpl;
+			workflowjournalListActionImpl.setWorkflowjournalService(getWorkflowjournalService());
+		}
+		return workflowjournalListAction;
 	}
 	
 	private Connection connection = null;
