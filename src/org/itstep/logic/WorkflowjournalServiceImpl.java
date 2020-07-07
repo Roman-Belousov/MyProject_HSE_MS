@@ -2,11 +2,13 @@ package org.itstep.logic;
 
 import java.util.List;
 
+import org.itstep.domain.EmployeeCard.EmployeeCard;
 import org.itstep.domain.Instruction.Instruction;
 import org.itstep.domain.Workflowjournal.BriefingType;
 import org.itstep.domain.Workflowjournal.Workflowjournal;
 import org.itstep.postgres.BriefingTypeDao;
 import org.itstep.postgres.DaoException;
+import org.itstep.postgres.EmployeeCardDao;
 import org.itstep.postgres.InstructionDao;
 import org.itstep.postgres.WorkflowjournalDao;
 
@@ -15,6 +17,17 @@ public class WorkflowjournalServiceImpl implements WorkflowjournalService {
 	private WorkflowjournalDao workflowjournalDao;
 	private BriefingTypeDao briefingtypeDao;
 	private InstructionDao instructionDao;
+	private EmployeeCardDao employeecardDao;
+	
+
+
+	public void setEmployeecardDao(EmployeeCardDao employeecardDao) {
+		this.employeecardDao = employeecardDao;
+	}
+
+	public void setInstructionDao(InstructionDao instructionDao) {
+		this.instructionDao = instructionDao;
+	}
 
 	public void setWorkflowjournalDao(WorkflowjournalDao workflowjournalDao) {
 		this.workflowjournalDao = workflowjournalDao;
@@ -24,9 +37,7 @@ public class WorkflowjournalServiceImpl implements WorkflowjournalService {
 		this.briefingtypeDao = briefingtypeDao;
 	}
 	
-	public void setInstructionDao(InstructionDao instructionDao) {
-		this.instructionDao = instructionDao;
-	}
+	
 	
 	@Override
 	public List<Workflowjournal> findAll() throws LogicException {
@@ -39,6 +50,9 @@ public class WorkflowjournalServiceImpl implements WorkflowjournalService {
 				Instruction instruction = workflowjournal.getInstruction();
 				instruction = instructionDao.read(instruction.getId());
 				workflowjournal.setInstruction(instruction);
+				EmployeeCard employeecard = workflowjournal.getEmployeecard();
+				employeecard = employeecardDao.read(employeecard.getId());
+				workflowjournal.setEmployeecard(employeecard);
 			}
 			return workflowjournals;
 		} catch (DaoException e) {

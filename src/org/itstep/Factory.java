@@ -298,6 +298,8 @@ public class Factory implements AutoCloseable{
 			workflowjournalService = service;
 			service.setWorkflowjournalDao(getWorkflowjournalDao());
 			service.setBriefingTypeDao(getBriefingTypeDao());
+			service.setInstructionDao(getInstructionDao());
+			service.setEmployeecardDao(getEmployeeCardDao());
 		}
 		return workflowjournalService;
 	}
