@@ -25,11 +25,13 @@
 				<th>Дата проведения</th>
 				<th></th>
 			</tr>
+			
 			<c:forEach var="workflowjournal" items="${workflowjournals}">
+			
 				<tr>
 					<td><input type="checkbox" name="id"
 						value="${workflowjournal.id}"></td>
-					<td>${workflowjournal.briefingtype.name}</td>
+					<td>${workflowjournal.briefingtype.name}</td>					
 					<td>${workflowjournal.instruction.id}</td>
 					<td>${workflowjournal.employeecard.id}</td>
 					<td>${workflowjournal.briefingdate}</td>

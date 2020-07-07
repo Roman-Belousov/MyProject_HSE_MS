@@ -27,7 +27,7 @@
 			<c:forEach var="instruction" items="${instructions}">
 				<tr>
 					<td><input type="checkbox" name="id"
-						value="${employeecard.id}"></td>
+						value="${instruction.id}"></td>
 					<td>${instruction.instructionType.name}</td>
 					<td>${instruction.name}</td>
 					<td>${instruction.serialnumber}</td>
