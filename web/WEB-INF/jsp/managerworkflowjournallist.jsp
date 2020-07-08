@@ -32,9 +32,10 @@
 					<td><input type="checkbox" name="id"
 						value="${workflowjournal.id}"></td>
 					<td>${workflowjournal.briefingtype.name}</td>					
-					<td>${workflowjournal.instruction.serialnumber}</td>
+					<td>${workflowjournal.instruction.name}</td>
 					<td>${workflowjournal.employeecard.surname}</td>
 					<td>${workflowjournal.briefingdate}</td>
+					
 					
 										
 					<td><button><a href="#">Редактировать</a></button></td>

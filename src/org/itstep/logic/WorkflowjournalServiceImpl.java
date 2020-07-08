@@ -68,9 +68,12 @@ public class WorkflowjournalServiceImpl implements WorkflowjournalService {
 				BriefingType briefingtype = workflowjournal.getBriefingtype();
 				briefingtype = briefingtypeDao.read(briefingtype.getId());
 				workflowjournal.setBriefingtype(briefingtype);
-				/*Instruction instruction = workflowjournal.getInstruction();
+				Instruction instruction = workflowjournal.getInstruction();
 				instruction = instructionDao.read(instruction.getId());
-				workflowjournal.setInstruction(instruction);*/
+				workflowjournal.setInstruction(instruction);
+				EmployeeCard employeecard = workflowjournal.getEmployeecard();
+				employeecard = employeecardDao.read(employeecard.getId());
+				workflowjournal.setEmployeecard(employeecard);
 			}
 			return workflowjournal;
 		} catch(DaoException e) {

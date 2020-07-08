@@ -43,6 +43,7 @@ import org.itstep.web.action.instruction.InstructionDeleteAction;
 import org.itstep.web.action.instruction.InstructionEditAction;
 import org.itstep.web.action.instruction.InstructionListAction;
 import org.itstep.web.action.instruction.InstructionSaveAction;
+import org.itstep.web.action.workflowjournal.WorkflowjournalEditAction;
 import org.itstep.web.action.workflowjournal.WorkflowjournalListAction;
 
 public class Factory implements AutoCloseable{
@@ -322,6 +323,20 @@ public class Factory implements AutoCloseable{
 		}
 		return workflowjournalListAction;
 	}
+	
+	private Action workflowjournalEditAction = null;
+	public Action getWorkflowjournalEditAction() throws LogicException {
+		if(workflowjournalEditAction == null) {
+			WorkflowjournalEditAction workflowjournalEditActionImpl = new WorkflowjournalEditAction();
+			workflowjournalEditAction = workflowjournalEditActionImpl;
+			workflowjournalEditActionImpl.setWorkflowjournalService(getWorkflowjournalService());
+			workflowjournalEditActionImpl.setBriefingTypeService(getBriefingTypeService());
+			
+		}
+		return workflowjournalEditAction;
+	}
+	
+	
 	
 	private Connection connection = null;
 	public Connection getConnection() throws LogicException {

@@ -12,8 +12,6 @@ public class WorkflowjournalListAction extends BaseWorkflowjournalAction {
 	public Result exec(HttpServletRequest req, HttpServletResponse resp) throws LogicException {
 		List<Workflowjournal> workflowjournals = getWorkflowjournalService().findAll();
 		req.setAttribute("workflowjournals", workflowjournals);
-		// req.getRequestDispatcher("/WEB-INF/jsp/employeecard/list.jsp").forward(req,
-		// resp);
 		return null;
 	}
 }
