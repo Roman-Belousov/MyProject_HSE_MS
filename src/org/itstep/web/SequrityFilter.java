@@ -48,7 +48,7 @@ public class SequrityFilter implements Filter {
 		managerURLs.add("/managerinstructionlist.html");
 		managerURLs.add("/manageremployeecardlist.html");
 		managerURLs.add("/managerworkflowjournallist.html");
-		managerURLs.add("/workflowjournal/workflowjournaledit.html");
+		managerURLs.add("/workflowjournal/save.html");
 		accessURLs.put(Role.MANAGER, managerURLs);		
 		Set<String> clientURLs = new HashSet<>();
 		accessURLs.put(Role.CLIENT, clientURLs);

@@ -82,18 +82,25 @@
 		</div>
 		<div class="menu">
 			<ul>
-    <li><a href="#"><i class="fa fa-envelope-open"></i>Мои задачи</a></li>
+    <li><a href="#"><i class="fa fa-envelope-open"></i>Мои задачи</a>    
+     <ul>
+      <c:url var="saveUrl" value="/workflowjournal/save.html">
+						<c:param name="id" value="${workflowjournal.id}" />
+					</c:url>     
+         <li><a href="${saveUrl}">Провести инструктаж</a>            
+      </ul>        
+    </li>    
+    
     <c:url var="cardlistUrl" value="/manageremployeecardlist.html" />
    <li><a href="${cardlistUrl}"><i class="fa fa-shopping-cart"></i>Сотрудники</a>
       <ul>
       <c:url var="editUrl" value="/employeecard/edit.html">
 						<c:param name="id" value="${employeecard.id}" />
-					</c:url>
-      
-         <li><a href="#">Найти сотрудника</a>
-            
+					</c:url>     
+         <li><a href="#">Найти сотрудника</a>            
       </ul>
    </li>
+   
    <li><a href="#"><i class="fa fa-cogs"></i>Документы</a>
       <ul>
          <li><a href="#">Приказы</a>

@@ -27,7 +27,7 @@
 			</tr>
 			
 			<c:forEach var="workflowjournal" items="${workflowjournals}">
-			
+	  		
 				<tr>
 					<td><input type="checkbox" name="id"
 						value="${workflowjournal.id}"></td>
@@ -36,8 +36,7 @@
 					<td>${workflowjournal.employeecard.surname}</td>
 					<td>${workflowjournal.briefingdate}</td>
 					
-					
-										
+														
 					<td><button><a href="#">Редактировать</a></button></td>
 				</tr>
 			</c:forEach>
