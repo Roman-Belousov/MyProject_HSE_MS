@@ -13,7 +13,8 @@
 <u:page2>
 
 	<h1 style="color: red; text-align:left;position:absolute; top: 330px; margin: 10px">Журнал инструктажа</h1>
-	
+	<c:url var="deleteUrl" value="/workflowjournal/delete.html" />
+	<form action="${deleteUrl}" method="post">
 	
 
 		<table border="1" style="background: grey; text-align:center; position:absolute; top: 400px; margin: 10px">
@@ -23,7 +24,7 @@
 				<th>Название инструкции</th>
 				<th>Сотрудник</th>
 				<th>Дата проведения</th>
-				<th></th>
+				
 			</tr>
 			
 			<c:forEach var="workflowjournal" items="${workflowjournals}">
@@ -35,15 +36,21 @@
 					<td>${workflowjournal.instruction.name}</td>
 					<td>${workflowjournal.employeecard.surname}</td>
 					<td>${workflowjournal.briefingdate}</td>
+					<c:url var="editUrl" value="/workflowjournal/edit.html">
+						<c:param name="id" value="${workflowjournal.id}" />
+					</c:url>
+					<td><button><a href="${editUrl}">Инструктировать</a></button></td>							
 					
-														
-					<td><button><a href="#">Редактировать</a></button></td>
 				</tr>
 			</c:forEach>
+			
 		</table>
 		
 		
-		
+	<p style="text-align:center; position:absolute; top: 560px; margin: 10px">
+			<button type="submit">Удалить</button>
+		</p>		
+	</form>	
 	
 </u:page2>
 

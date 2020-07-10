@@ -65,6 +65,10 @@ public class Factory implements AutoCloseable {
 		actions.put("/instruction/edit", () -> getInstructionEditAction());
 		actions.put("/instruction/save", () -> getInstructionSaveAction());
 		actions.put("/instruction/delete", () -> getInstructionDeleteAction());
+		actions.put("/workflowjournal/list", () -> getWorkflowjournalListAction());
+		actions.put("/workflowjournal/edit", () -> getWorkflowjournalEditAction());
+		actions.put("/workflowjournal/save", () -> getWorkflowjournalSaveAction());
+		actions.put("/workflowjournal/delete", () -> getWorkflowjournalDeleteAction());
 		actions.put("/managerinstructionlist", () -> getInstructionListAction());
 		actions.put("/manageremployeecardlist", () -> getCardListAction());
 		actions.put("/managerworkflowjournallist", () -> getWorkflowjournalListAction());

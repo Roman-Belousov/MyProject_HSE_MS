@@ -24,6 +24,6 @@ public class WorkflowjournalDeleteAction extends BaseWorkflowjournalAction {
 				throw new ActionException(e, 400);
 			}
 		}
-		return new Result("/workflowjournal/list");
+		return new Result("/managerworkflowjournallist");
 	}
 }

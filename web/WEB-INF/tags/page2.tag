@@ -84,10 +84,15 @@
 			<ul>
     <li><a href="#"><i class="fa fa-envelope-open"></i>Мои задачи</a>    
      <ul>
-      <c:url var="saveUrl" value="/workflowjournal/save.html">
-						<c:param name="id" value="${workflowjournal.id}" />
-					</c:url>     
-         <li><a href="${saveUrl}">Провести инструктаж</a>            
+      <c:url var="listUrl" value="/managerworkflowjournallist.html" />
+						
+					   
+         <li><a href="${listUrl}">Журнал инструктажа</a>
+         <ul>
+         <c:url var="saveUrl" value="/workflowjournal/edit.html" />
+               <li><a href="${saveUrl}">Провести инструктаж</a></li>
+               
+               </ul>            
       </ul>        
     </li>    
     

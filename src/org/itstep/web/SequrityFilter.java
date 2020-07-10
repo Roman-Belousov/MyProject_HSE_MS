@@ -45,10 +45,15 @@ public class SequrityFilter implements Filter {
 		managerURLs.add("/employeecard/save.html");
 		managerURLs.add("/employeecard/delete.html");
 		managerURLs.add("/instruction/list.html");
+		managerURLs.add("/instruction/save.html");
 		managerURLs.add("/managerinstructionlist.html");
 		managerURLs.add("/manageremployeecardlist.html");
 		managerURLs.add("/managerworkflowjournallist.html");
+		managerURLs.add("/workflowjournal/list.html");
+		managerURLs.add("/workflowjournal/edit.html");
+		managerURLs.add("/workflowjournal/workflowjournaledit.html");
 		managerURLs.add("/workflowjournal/save.html");
+		managerURLs.add("/workflowjournal/delete.html");
 		accessURLs.put(Role.MANAGER, managerURLs);		
 		Set<String> clientURLs = new HashSet<>();
 		accessURLs.put(Role.CLIENT, clientURLs);

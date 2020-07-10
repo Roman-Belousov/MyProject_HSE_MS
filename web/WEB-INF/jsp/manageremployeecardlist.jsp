@@ -39,8 +39,7 @@
 					<td>${employeecard.briefingtype}</td>
 					<td>${employeecard.dateofbriefing}</td>
 					
-					<c:url var="listUrl" value="/managerworkflowjournallist.html" />
-					<td><button><a href="${listUrl}">Провести инструктаж</a></button></td>
+					
 					
 					<c:url var="editUrl" value="/employeecard/edit.html">
 						<c:param name="id" value="${employeecard.id}" />
