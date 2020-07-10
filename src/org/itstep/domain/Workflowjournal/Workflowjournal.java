@@ -57,8 +57,6 @@ public class Workflowjournal extends Entity {
 
 	@Override
 	public String toString() {
-		return briefingtype + " / "
-				+ "[" + getId() + "] "  + "," + instruction
-				 + "," + employeecard + "," + SDF.format(briefingdate);
+		return "Вид  инструктажа" + briefingtype + " " + "Наименование инструкции" + instruction + " " + "Фамилия работника" + employeecard + " " + "Дата проведения" + SDF.format(briefingdate);
 	}
 }
