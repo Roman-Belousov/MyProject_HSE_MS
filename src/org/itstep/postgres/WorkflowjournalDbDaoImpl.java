@@ -86,6 +86,7 @@ public class WorkflowjournalDbDaoImpl implements WorkflowjournalDao {
 			s.setLong(2, workflowjournal.getBriefingtype().getId());
 			s.setLong(3, workflowjournal.getEmployeecard().getId());
 			s.setDate(4, new java.sql.Date(workflowjournal.getBriefingdate().getTime()));
+			s.setLong(5, workflowjournal.getId());
 			s.executeUpdate();
 		} catch(SQLException e) {
 			throw new DaoException(e);

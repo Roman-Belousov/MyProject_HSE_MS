@@ -51,7 +51,6 @@ public class SequrityFilter implements Filter {
 		managerURLs.add("/managerworkflowjournallist.html");
 		managerURLs.add("/workflowjournal/list.html");
 		managerURLs.add("/workflowjournal/edit.html");
-		managerURLs.add("/workflowjournal/workflowjournaledit.html");
 		managerURLs.add("/workflowjournal/save.html");
 		managerURLs.add("/workflowjournal/delete.html");
 		accessURLs.put(Role.MANAGER, managerURLs);		

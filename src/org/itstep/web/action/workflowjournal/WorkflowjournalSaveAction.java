@@ -34,16 +34,13 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 			workflowjournal.setEmployeecard(new EmployeeCard());
 			workflowjournal.getBriefingtype().setId(Long.parseLong(briefingtype));
 			workflowjournal.getInstruction().setId(Long.parseLong(instruction));
-			workflowjournal.getEmployeecard().setId(Long.parseLong(employeecard));
-			
-			//TODO Разобраться с датами
-			
+			workflowjournal.getEmployeecard().setId(Long.parseLong(employeecard));			
 			workflowjournal.setBriefingdate(SDF.parse(briefingdate));
 			
 			 
 						
 			getWorkflowjournalService().save(workflowjournal);
-			return new Result("/managerworkflowjournallist");
+			return new Result("managerworkflowjournallist");
 		} catch(IllegalArgumentException | ParseException e) {
 			throw new ActionException(e, 400);
 		}

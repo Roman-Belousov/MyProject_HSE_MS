@@ -90,7 +90,8 @@
          <li><a href="${listUrl}">Журнал инструктажа</a>
          <ul>
          <c:url var="saveUrl" value="/workflowjournal/edit.html" />
-               <li><a href="${saveUrl}">Провести инструктаж</a></li>
+         
+               <li><a href="#">Провести инструктаж</a></li>
                
                </ul>            
       </ul>        
