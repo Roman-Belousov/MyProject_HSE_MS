@@ -18,9 +18,16 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 		try {
 			
 			String id = req.getParameter("id");
+			
 			String briefingtype = req.getParameter("briefingtype");
-			String instruction = req.getParameter("instruction");			
-			String employeecard = req.getParameter("employeecard");			
+			
+			
+			String instruction = req.getParameter("instruction");
+			if(instruction == null || instruction.isEmpty()) {
+				throw new NullPointerException();
+			}
+			String employeecard = req.getParameter("employeecard");
+			
 		    String briefingdate = req.getParameter("briefingdate");
 			
 			
@@ -41,8 +48,9 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 						
 			getWorkflowjournalService().save(workflowjournal);
 			return new Result("managerworkflowjournallist");
-		} catch(IllegalArgumentException | ParseException e) {
+		} catch(IllegalArgumentException | ParseException e) {		
 			throw new ActionException(e, 400);
+						
 		}
 	}
 }

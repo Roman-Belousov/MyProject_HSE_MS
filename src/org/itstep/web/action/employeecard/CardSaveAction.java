@@ -17,15 +17,15 @@ public class CardSaveAction extends BaseEmployeeCardAction {
 				throw new IllegalArgumentException();
 			}
 			String surname = req.getParameter("surname");
-			if(name == null || name.isEmpty()) {
+			if(surname == null || surname.isEmpty()) {
 				throw new IllegalArgumentException();
 			}
 			String workarea = req.getParameter("workarea");
-			if(name == null || name.isEmpty()) {
+			if(workarea == null || workarea.isEmpty()) {
 				throw new IllegalArgumentException();
 			}
 			String position = req.getParameter("position");
-			if(name == null || name.isEmpty()) {
+			if(position == null || position.isEmpty()) {
 				throw new IllegalArgumentException();
 			}
 			

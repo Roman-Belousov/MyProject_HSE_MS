@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="u"%>
 <%@ page import="org.itstep.domain.Instruction.Instruction"%>
@@ -21,6 +22,8 @@
 		<c:if test="${not empty workflowjournal.id}">
 			<input type="hidden" name="id" value="${workflowjournal.id}">
 			</c:if>
+			
+			
 
 		<div>
 
