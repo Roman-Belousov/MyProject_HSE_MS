@@ -60,6 +60,30 @@ CREATE TABLE "user" (
 	 */
 );
 
+CREATE TABLE "order_type" (
+	"id" SERIAL PRIMARY KEY,
+	"name" TEXT NOT NULL
+);
+
+CREATE TABLE "order" (
+    "id"  SERIAL PRIMARY KEY,
+	"serial_number" INTEGER NOT NULL UNIQUE,
+	"name" TEXT NOT NULL,
+	"date_of_creation" DATE NOT NULL,
+	"expiration_date" DATE NOT NULL,
+	"filename" TEXT NOT NULL,
+	"order_type_id" INTEGER NOT NULL REFERENCES "order_type",
+	"executer_id" INTEGER NOT NULL REFERENCES "user"
+);
+
+
+
+
+
+
+
+
+
 CREATE TABLE "category" (
 	"id" SERIAL PRIMARY KEY,
 	"name" TEXT NOT NULL
