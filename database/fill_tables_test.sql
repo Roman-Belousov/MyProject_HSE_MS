@@ -53,13 +53,13 @@ SELECT setval('instruction_type_id_seq', 5);
 
 INSERT INTO "workflow_journal"
 -----------------------------------------------------------------------------------------
-("id", "instruction_id" ,"briefing_type_id", "workers_personal_card_id" , "briefing_date" ) VALUES
+( "instruction_id" ,"briefing_type_id", "workers_personal_card_id" , "briefing_date" ) VALUES
 -----------------------------------------------------------------------------------------
-(1   , 1                , 1                , 1                          ,'02.01.2020'     ),
-(2   , 2                , 2                , 2                          ,'02.01.2020'     ),
-(3   , 1                , 3                , 3                          ,'02.01.2020'     ),
-(4   , 4                , 1                , 4                          ,'02.01.2020'     ),
-(5   , 1                , 1                , 5                          ,'02.01.2020'     );
+( 1                , 1                , 1                          ,'02.01.2020'     ),
+( 2                , 2                , 2                          ,'02.01.2020'     ),
+( 1                , 3                , 3                          ,'02.01.2020'     ),
+( 4                , 1                , 4                          ,'02.01.2020'     ),
+( 1                , 1                , 5                          ,'02.01.2020'     );
 SELECT setval('workflow_journal_seq', 5);
 
 

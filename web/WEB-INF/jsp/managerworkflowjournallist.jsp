@@ -47,7 +47,7 @@
 		</table>
 		
 		
-	<p style="text-align:center; position:absolute; top: 560px; margin: 10px">
+	<p style="text-align:center; position:absolute; top: 590px; margin: 10px">
 			<button type="submit">Удалить</button>
 		</p>		
 	</form>	

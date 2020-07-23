@@ -18,7 +18,7 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 
 	@Override
 	public Long create(EmployeeCard employeecard) throws DaoException {
-		String sql = "INSERT INTO \"workers_personal_card\"(\"personnel_number\", \"name\", \"surname\", \"work_area\", \"position\") VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO \"workers_personal_card\"(\"personnel_number\", \"name\", \"surname\", \"work_area\", \"position\", \"briefing_type\", \"date_of_briefing\") VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement s = null;
 		ResultSet r = null;
 		try {
@@ -28,6 +28,8 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 			s.setString(3, employeecard.getSurname());
 			s.setString(4, employeecard.getWorkarea());
 			s.setString(5, employeecard.getPosition());
+			s.setString(6, employeecard.getBriefingtype());
+			s.setDate(7, new java.sql.Date(employeecard.getDateofbriefing().getTime()));
 			s.executeUpdate();
 			r = s.getGeneratedKeys(); // ПОЛУЧАЕМ сгенерированные ключи (не работает без Statement.RETURN_GENERATED_KEYS)
 			r.next();
@@ -72,7 +74,7 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 
 	@Override
 	public void update(EmployeeCard employeecard) throws DaoException {
-		String sql = "UPDATE \"workers_personal_card\" SET \"personnel_number\" = ?, \"name\" = ? , \"surname\" = ? , \"work_area\" = ? , \"position\" = ? WHERE \"id\" = ?";
+		String sql = "UPDATE \"workers_personal_card\" SET \"personnel_number\" = ?, \"name\" = ? , \"surname\" = ? , \"work_area\" = ? , \"position\" = ?, \"briefing_type\" = ?, \"date_of_briefing\" = ? WHERE \"id\" = ?";
 		PreparedStatement s = null;
 		try {
 			s = c.prepareStatement(sql);
@@ -82,7 +84,9 @@ public class CardDbDaoImpl implements EmployeeCardDao {
 			s.setString(3, employeecard.getSurname());
 			s.setString(4, employeecard.getWorkarea());
 			s.setString(5, employeecard.getPosition());
-			s.setLong(6, employeecard.getId());
+			s.setString(6, employeecard.getBriefingtype());
+			s.setDate(7, new java.sql.Date(employeecard.getDateofbriefing().getTime()));
+			s.setLong(8, employeecard.getId());
 			s.executeUpdate();
 		} catch(SQLException e) {
 			throw new DaoException(e);

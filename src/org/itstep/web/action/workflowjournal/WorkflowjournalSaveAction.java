@@ -45,7 +45,7 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 			 
 						
 			getWorkflowjournalService().save(workflowjournal);
-			return new Result("managerworkflowjournallist");
+			return new Result("/managerworkflowjournallist");
 		} catch(IllegalArgumentException | ParseException e) {		
 			throw new ActionException(e, 400);
 						

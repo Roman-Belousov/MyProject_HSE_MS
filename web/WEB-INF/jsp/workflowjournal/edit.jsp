@@ -15,7 +15,8 @@
 <u:page2>
 
 	<h1
-		style="background: grey; color: yellow; text-align: left; padding: 5px; position: absolute; top: 230px">${title} (Работник ${workflowjournal.employeecard.surname})</h1>
+		style="background: grey; color: yellow; text-align: left; padding: 5px; position: absolute; top: 230px">${title} для ${workflowjournal.employeecard.position} 
+		${workflowjournal.employeecard.surname} ${workflowjournal.employeecard.name}</h1>
 	<c:url var="saveUrl" value="/workflowjournal/save.html"/>
 	<form action="${saveUrl}" method="post" style="text-align: left; position: absolute; top: 310px; left: 15px">
 		
@@ -57,14 +58,14 @@
 			</select>
 
 		</div>
-
+<br>
 		<div>
 			 <label for="serialnumber">Номер инструкции</label> 
 			<p></p>
 				<select id="serialnumber" name="serialnumber">
-				<c:forEach var="serialnumber" items="${serialnumbers}" >
+				<c:forEach var="instruction" items="${instructions}" >
 				<c:choose>
-					<c:when test="${instruction.serialnumber == workflowjournal.instruction.serialnumber}">
+					<c:when test="${instruction.id == workflowjournal.instruction.id}">
 						<c:set var="selected" value="selected" />
 					</c:when>
 					<c:otherwise>
@@ -72,12 +73,12 @@
 					</c:otherwise>
 				</c:choose>
 		
-					<option value="${instruction.serialnumber}" ${selected}>${instruction.serialnumber}</option>
+					<option value="${instruction.id}" ${selected}>№ ${instruction.serialnumber}  "${instruction.name}"</option>
 				</c:forEach>
 			</select>
 							
 		</div>
-
+<br>
 		<button type="submit">Сохранить</button>
 		<button type="reset">Отменить</button>
 

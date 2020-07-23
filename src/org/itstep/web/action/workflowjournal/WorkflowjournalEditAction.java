@@ -29,7 +29,7 @@ public class WorkflowjournalEditAction extends BaseWorkflowjournalAction {
 			List<BriefingType> briefingtypes = briefingtypeService.findAll();
 			req.setAttribute("briefingtypes", briefingtypes);
 			List<Instruction> instructions = instructionService.findAll();
-			req.setAttribute("instruction", instructions);
+			req.setAttribute("instructions", instructions);
 			
 			String id = req.getParameter("id");			
 			if(id != null) {

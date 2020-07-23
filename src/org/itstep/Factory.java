@@ -129,6 +129,7 @@ public class Factory implements AutoCloseable {
 			CardEditAction cardEditActionImpl = new CardEditAction();
 			cardEditAction = cardEditActionImpl;
 			cardEditActionImpl.setCardService(getCardService());
+			cardEditActionImpl.setBriefingTypeService(getBriefingTypeService());
 
 		}
 		return cardEditAction;

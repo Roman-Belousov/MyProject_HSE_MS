@@ -47,7 +47,36 @@
 			<br>
 			<input type="text" id="position" name="position" value="${employeecard.position}">
 			<br>
+			<div>
+			<label for="briefingtype">Вид инструктажа:</label> <br>
+			<p></p>
+
+			<select id="briefingtype" name="briefingtype">
+				<c:forEach var="briefingtype" items="${briefingtypes}" >
+				<c:choose>
+					<c:when test="${briefingtype.id == workflowjournal.briefingtype.id}">
+						<c:set var="selected" value="selected" />
+					</c:when>
+					<c:otherwise>
+						<c:remove var="selected" />
+					</c:otherwise>
+				</c:choose>
+		
+					<option value="${briefingtype.id}" ${selected}>${briefingtype.name}</option>
+				</c:forEach>
+			</select>
+
+		</div>
 			<br>
+			<div>
+
+			<label for="briefingdate">Дата инструктажа</label> <br>
+			<p>
+				<input  type="text" id="briefingdate" name="briefingdate" value="${workflowjournal.briefingdate}">
+					
+			</p>
+			<br>
+		</div>
 			<button type="submit">Сохранить</button>
 		</form>
 
