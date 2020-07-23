@@ -22,11 +22,9 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 			String briefingtype = req.getParameter("briefingtype");
 			
 			
-			String instruction = req.getParameter("instruction");
-			if(instruction == null || instruction.isEmpty()) {
-				throw new NullPointerException();
-			}
-			String employeecard = req.getParameter("employeecard");
+			String instruction = req.getParameter("serialnumber");
+			
+			String employeecardId = req.getParameter("employeecard-id");
 			
 		    String briefingdate = req.getParameter("briefingdate");
 			
@@ -34,14 +32,14 @@ public class WorkflowjournalSaveAction extends BaseWorkflowjournalAction {
 		    Workflowjournal workflowjournal = new Workflowjournal();
 			
 			if(id != null) {
-				workflowjournal.setId(Long.parseLong(id));
+				//workflowjournal.setId(Long.parseLong(id));
 			}
 			workflowjournal.setBriefingtype(new BriefingType());
 			workflowjournal.setInstruction(new Instruction());
 			workflowjournal.setEmployeecard(new EmployeeCard());
 			workflowjournal.getBriefingtype().setId(Long.parseLong(briefingtype));
 			workflowjournal.getInstruction().setId(Long.parseLong(instruction));
-			workflowjournal.getEmployeecard().setId(Long.parseLong(employeecard));			
+			workflowjournal.getEmployeecard().setId(Long.parseLong(employeecardId));			
 			workflowjournal.setBriefingdate(SDF.parse(briefingdate));
 			
 			 

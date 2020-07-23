@@ -28,6 +28,8 @@ public class InstructionServiceImpl implements InstructionService {
 				InstructionType instructiontype = instruction.getInstructionType();
 				instructiontype = instructiontypeDao.read(instructiontype.getId());
 				instruction.setInstructionType(instructiontype);
+				
+				
 			}
 			return instructions;
 		} catch (DaoException e) {

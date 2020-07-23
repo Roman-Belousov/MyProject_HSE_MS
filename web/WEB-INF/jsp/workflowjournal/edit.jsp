@@ -15,7 +15,7 @@
 <u:page2>
 
 	<h1
-		style="background: grey; color: yellow; text-align: left; padding: 5px; position: absolute; top: 230px">${title}</h1>
+		style="background: grey; color: yellow; text-align: left; padding: 5px; position: absolute; top: 230px">${title} (Работник ${workflowjournal.employeecard.surname})</h1>
 	<c:url var="saveUrl" value="/workflowjournal/save.html"/>
 	<form action="${saveUrl}" method="post" style="text-align: left; position: absolute; top: 310px; left: 15px">
 		
@@ -35,15 +35,7 @@
 			<br>
 		</div>
 
-		<div>
-			<label for="surname">Фамилия работника</label> <br>
-			<p>
-			
-				<input type="text" id="surname" name="surname" value="${workflowjournal.employeecard.surname}">
-					
-			</p>
-			<br>
-		</div>
+		<input type="hidden" id="employeecard-id" name="employeecard-id" value="${workflowjournal.employeecard.id}">
 
 		<div>
 			<label for="briefingtype">Вид инструктажа:</label> <br>
@@ -52,7 +44,7 @@
 			<select id="briefingtype" name="briefingtype">
 				<c:forEach var="briefingtype" items="${briefingtypes}" >
 				<c:choose>
-					<c:when test="${workflowjournal.id == workflowjournal.briefingtype.id}">
+					<c:when test="${briefingtype.id == workflowjournal.briefingtype.id}">
 						<c:set var="selected" value="selected" />
 					</c:when>
 					<c:otherwise>
@@ -67,12 +59,23 @@
 		</div>
 
 		<div>
-			<br> <label for="serialnumber">Номер инструкции</label> <br>
-			<p>
-				<input type="text" id="serialnumber" name="serialnumber" value="${workflowjournal.instruction.serialnumber}">
-					
-			</p>
-			<br>
+			 <label for="serialnumber">Номер инструкции</label> 
+			<p></p>
+				<select id="serialnumber" name="serialnumber">
+				<c:forEach var="serialnumber" items="${serialnumbers}" >
+				<c:choose>
+					<c:when test="${instruction.serialnumber == workflowjournal.instruction.serialnumber}">
+						<c:set var="selected" value="selected" />
+					</c:when>
+					<c:otherwise>
+						<c:remove var="selected" />
+					</c:otherwise>
+				</c:choose>
+		
+					<option value="${instruction.serialnumber}" ${selected}>${instruction.serialnumber}</option>
+				</c:forEach>
+			</select>
+							
 		</div>
 
 		<button type="submit">Сохранить</button>

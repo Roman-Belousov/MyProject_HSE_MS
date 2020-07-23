@@ -360,6 +360,7 @@ public class Factory implements AutoCloseable {
 			workflowjournalEditAction = workflowjournalEditActionImpl;
 			workflowjournalEditActionImpl.setWorkflowjournalService(getWorkflowjournalService());
 			workflowjournalEditActionImpl.setBriefingTypeService(getBriefingTypeService());
+			workflowjournalEditActionImpl.setInstructionService(getInstructionService());
 
 		}
 		return workflowjournalEditAction;
