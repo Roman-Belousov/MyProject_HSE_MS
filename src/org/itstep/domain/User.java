@@ -1,5 +1,6 @@
 package org.itstep.domain;
 
+@SuppressWarnings("serial")
 public class User extends Entity {
 	private String login;
 	private String password;

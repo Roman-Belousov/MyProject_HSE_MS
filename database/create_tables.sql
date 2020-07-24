@@ -69,7 +69,7 @@ CREATE TABLE "order" (
     "id"  SERIAL PRIMARY KEY,
 	"serial_number" INTEGER NOT NULL UNIQUE,
 	"order_type_id" INTEGER NOT NULL REFERENCES "order_type",
-	"name" TEXT NOT NULL,
+	"ordername" TEXT NOT NULL,
 	"date_of_creation" DATE NOT NULL,
 	"expiration_date" DATE NOT NULL,
 	"filename" TEXT NOT NULL,
