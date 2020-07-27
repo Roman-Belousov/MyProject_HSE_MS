@@ -9,26 +9,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.itstep.domain.Instruction.InstructionType;
+import org.itstep.domain.Order.OrderType;
 
 
-public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
+public class OrderTypeDbDaoImpl implements OrderTypeDao {
 	private Connection c;
 
 	public void setConnection(Connection c) {
 		this.c = c;
 	}
 
-	private Map<Long, InstructionType> cache = new HashMap<>();
+	private Map<Long, OrderType> cache = new HashMap<>();
 
 	@Override
-	public Long create(InstructionType instructiontype) throws DaoException {
-		String sql = "INSERT INTO \"instruction_type\"(\"name\") VALUES (?)";
+	public Long create(OrderType ordertype) throws DaoException {
+		String sql = "INSERT INTO \"order_type\"(\"name\") VALUES (?)";
 		PreparedStatement s = null;
 		ResultSet r = null;
 		try {
 			s = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); // просим, чтобы statement МОГ получить ключи
-			s.setString(1, instructiontype.getName());
+			s.setString(1, ordertype.getName());
 			s.executeUpdate();
 			r = s.getGeneratedKeys(); // ПОЛУЧАЕМ сгенерированные ключи (не работает без Statement.RETURN_GENERATED_KEYS)
 			r.next();
@@ -43,10 +43,10 @@ public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
 	}
 
 	@Override
-	public InstructionType read(Long id) throws DaoException {
-		String sql = "SELECT \"name\" FROM \"instruction_type\" WHERE \"id\" = ?";
-		InstructionType instructiontype = cache.get(id);
-		if(instructiontype == null) {
+	public OrderType read(Long id) throws DaoException {
+		String sql = "SELECT \"name\" FROM \"order_type\" WHERE \"id\" = ?";
+		OrderType ordertype = cache.get(id);
+		if(ordertype == null) {
 			PreparedStatement s = null;
 			ResultSet r = null;
 			try {
@@ -54,10 +54,10 @@ public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
 				s.setLong(1, id);
 				r = s.executeQuery();
 				if(r.next()) {
-					instructiontype = new InstructionType();
-					instructiontype.setId(id);
-					instructiontype.setName(r.getString("name"));
-					cache.put(id, instructiontype);
+					ordertype = new OrderType();
+					ordertype.setId(id);
+					ordertype.setName(r.getString("name"));
+					cache.put(id, ordertype);
 				}
 			} catch(SQLException e) {
 				throw new DaoException(e);
@@ -66,17 +66,17 @@ public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
 				try { s.close(); } catch(Exception e) {}
 			}
 		}
-		return instructiontype;
+		return ordertype;
 	}
 
 	@Override
-	public void update(InstructionType instructiontype) throws DaoException {
-		String sql = "UPDATE \"instruction_type\" SET \"name\" = ? WHERE \"id\" = ?";
+	public void update(OrderType ordertype) throws DaoException {
+		String sql = "UPDATE \"order_type\" SET \"name\" = ? WHERE \"id\" = ?";
 		PreparedStatement s = null;
 		try {
 			s = c.prepareStatement(sql);
-			s.setString(1, instructiontype.getName());
-			s.setLong(2, instructiontype.getId());
+			s.setString(1, ordertype.getName());
+			s.setLong(2, ordertype.getId());
 			s.executeUpdate();
 			cache.clear();
 		} catch(SQLException e) {
@@ -88,7 +88,7 @@ public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
 
 	@Override
 	public void delete(Long id) throws DaoException {
-		String sql = "DELETE FROM \"instruction_type\" WHERE \"id\" = ?";
+		String sql = "DELETE FROM \"order_type\" WHERE \"id\" = ?";
 		PreparedStatement s = null;
 		try {
 			s = c.prepareStatement(sql);
@@ -103,21 +103,21 @@ public class InstructionTypeDbDaoImpl implements InstructionTypeDao {
 	}
 
 	@Override
-	public List<InstructionType> read() throws DaoException {
-		String sql = "SELECT \"id\", \"name\" FROM \"instruction_type\"";
+	public List<OrderType> read() throws DaoException {
+		String sql = "SELECT \"id\", \"name\" FROM \"order_type\"";
 		Statement s = null;
 		ResultSet r = null;
 		try {
 			s = c.createStatement();
 			r = s.executeQuery(sql);
-			List<InstructionType> instructiontypes = new ArrayList<>();
+			List<OrderType> ordertypes = new ArrayList<>();
 			while(r.next()) {
-				InstructionType instructiontype = new InstructionType();
-				instructiontype.setId(r.getLong("id"));
-				instructiontype.setName(r.getString("name"));
-				instructiontypes.add(instructiontype);
+				OrderType ordertype = new OrderType();
+				ordertype.setId(r.getLong("id"));
+				ordertype.setName(r.getString("name"));
+				ordertypes.add(ordertype);
 			}
-			return instructiontypes;
+			return ordertypes;
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
